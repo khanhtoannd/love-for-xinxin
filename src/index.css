@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #080510;
+  --color-text-main: #ffeaf4;
+  --color-text-soft: rgba(255, 233, 244, 0.9);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 77, 136, 0.16), transparent 35%),
+    radial-gradient(circle at 70% 80%, rgba(175, 99, 255, 0.18), transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(255, 53, 89, 0.08), transparent 45%),
+    var(--color-bg);
+  color: white;
+  touch-action: none;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.g1 {
+  width: min(55vw, 520px);
+  height: min(55vw, 520px);
+  background: radial-gradient(circle, rgba(255, 110, 164, 0.4), rgba(255, 110, 164, 0));
+  left: 20%;
+  top: 10%;
+  animation: drift1 14s ease-in-out infinite alternate;
+}
+
+.g2 {
+  width: min(45vw, 450px);
+  height: min(45vw, 450px);
+  background: radial-gradient(circle, rgba(167, 101, 255, 0.32), rgba(167, 101, 255, 0));
+  right: 12%;
+  bottom: 8%;
+  animation: drift2 16s ease-in-out infinite alternate;
+}
+
+.stars {
+  display: none;
+}
+
+@keyframes drift1 { from { transform: translate(0, 0) scale(1);} to { transform: translate(6vw, 4vh) scale(1.07);} }
+@keyframes drift2 { from { transform: translate(0, 0) scale(1);} to { transform: translate(-5vw, -3vh) scale(1.08);} }
+@keyframes heartbeat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); filter: brightness(1); }
+  50% { transform: translate(-50%, -50%) scale(1.04); filter: brightness(1.12); }
+}
+
+@media (max-width: 760px) {
+  .g1 { width: min(70vw, 420px); height: min(70vw, 420px); left: 8%; top: 6%; }
+  .g2 { width: min(64vw, 390px); height: min(64vw, 390px); right: 3%; bottom: 6%; }
+}
